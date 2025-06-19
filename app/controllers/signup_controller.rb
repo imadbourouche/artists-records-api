@@ -8,7 +8,7 @@ class SignupController < ApplicationController
       token = JWTSessions::Session.new(payload: payload, refresh_by_access_allowed: true).login
       response.set_cookie(JWTSessions.access_cookie,
                           value: token[:access],
-                          httponly: true, 
+                          httponly: true,
                           secure: Rails.env.production?,
                           same_site: :strict)
       response.set_cookie(JWTSessions.refresh_cookie,
